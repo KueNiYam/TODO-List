@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, current_app
 from sqlalchemy import create_engine, text
 
 def create_app(db_config = None):
