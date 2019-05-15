@@ -1,6 +1,27 @@
 from flask import Flask, jsonify, request, current_app
 from sqlalchemy import create_engine, text
 
+def select_todo_all():
+    todo_all = current_app.database.execute(text("""
+        SELECT
+            id,
+            title,
+            content,
+            deadline,
+            is_completed,
+            priority
+        FROM todo_list
+    """), {}).fetchall()
+
+    return [{
+            'id': item['id'],
+            'title': item['title'],
+            'content': item['content'],
+            'deadline': item['deadline'],
+            'is_completed': item['is_completed'],
+            'priority': item['priority']
+        } for item in todo_all]
+
 def create_app(db_config = None):
     app = Flask(__name__)
 
@@ -25,21 +46,35 @@ def create_app(db_config = None):
         pass
 
     @app.route('/todo/all', methods=['GET'])
-    def get_todo():
+    def get_todo_all():
         """
         모든 todo에 대한 데이터 전송
+        """
+
+        return jsonify({
+            'todo_all':select_todo_all()
+        })
+
+    @app.route('/todo', methods=['POST'])
+    def post_todo_item():
+        """
+        요청 받은 데이터를todo 항목 추가
         """
         # 구현 예정
         pass
 
-    @app.route('/todo', methods=['POST'])
-    def post_todo():
+    @app.route('/todo/<int:id>', methods=['PUT'])
+    def put_todo_item(id):
         """
-        todo 항목에 대해
-        1. 추가
-        2. 수정
-        3. 완료
-        4. 삭제
+        요청 받은 todo 항목을 수정(완료 포함)
+        """
+        # 구현 예정
+        pass
+
+    @app.route('/todo/<int:id>', methods=['DELETE'])
+    def delete_todo_item(id):
+        """
+        요청 받은 todo 항목을 제거
         """
         # 구현 예정
         pass
