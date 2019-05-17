@@ -6,44 +6,56 @@
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="../static/index.css" />
 	<script type="text/javascript" src="../static/index.js" charset="utf-8"></script>
-	<title>TODO-List</title>
+	<title>Summer Coding 2019: To Do List</title>
 </head>
 <body>
 	<div id="box">
 		<div id="system">
-			<div id="system_foot">
-				<p id="log_time">로그 시간</p>
-				<p id="log">시스템 로그</p>
+			<div id="top_title">
+			Summer Coding 2019: To Do List
 			</div>
+			<div id="log">
+            불러오는 중...
+			</div>
+			<a id="update">갱신/알람체크</a>
 		</div>
 		<div id="main">
 			<div id="main_top">
-				<input type="text" id="post_title" value="제목">
-				<input type="submit" id="post" value="올리기">
+				<input type="text" id="post_title" placeholder="제목">
+				<input type="submit" id="post_btn" value="@TODO">
 			</div>
 			<div id="main_todo">
 				<ol id="todo_list">
-					<li class="todo_item">
-						<div>
-							<div>
-								<input type="button" name="up">
-								<input type="button" name="down">
+				<!--
+					<li class="todo_item" id="ㄹㅇid">
+						<div class="todo_item_top">
+							<div class="priority_btn">
+								<input type="button" class="up" name="up">
+								<input type="button" class="down" name="down">
 							</div>
-							<input type="text" name="title" value="제목">
-							<input type="text" name="datetime">
+							<input type="text" class="title" name="title" placeholder="( 제목 )">
+							<div class="todo_item_right">
+								<input type="text" class="deadline" name="deadline" placeholder= "날짜 없음">
+								<div class="right_btn">
+									<input type="button" class="complete" name="complete">
+									<input type="button" class="delete" name="delete">
+								</div>
+							</div>
 						</div>
-						<div>
-							<input type="text" name="content" value="내용">
-						</div>
+						<div class="content_box">
+							<textarea class="content" name="content" placeholder="( 내용 )" maxlength="2000"></textarea>
 					</li>
+				-->
 				</ol>
 			</div>
 		</div>
 		<div id="alarm">
-			<ol = "alarm_list">
-				<li class="alarm_item">
-					<p class="alarm_title">알람</p>
+			<ol id="alarm_list">
+				<!--
+				<li class="alarm_item" id ="ㄹㅇ아이디">
+					( 알람1 )
 				</li>
+				-->
 			</ol>
 		</div>
 	</div>

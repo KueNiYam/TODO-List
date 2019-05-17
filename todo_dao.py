@@ -36,7 +36,6 @@ class TodoDao:
             priority
         FROM todo_list
         WHERE id = :id
-        LIMIT 1
         """), {'id': item_id}).fetchone()
 
         return {
@@ -64,7 +63,6 @@ class TodoDao:
                 FROM todo_list t
                 )
             )
-            LIMIT 1
         """), new_item)
 
         return result.rowcount, result.lastrowid
@@ -79,7 +77,6 @@ class TodoDao:
                 is_completed = :is_completed
             WHERE
                 id = :id
-            LIMIT 1
             """), new_item)
 
         return result.rowcount
@@ -88,7 +85,6 @@ class TodoDao:
         result = self.db.execute(text("""
             DELETE FROM todo_list
             WHERE id = :id
-            LIMIT 1
             """), {'id': item_id})
 
         return result.rowcount
@@ -110,7 +106,6 @@ class TodoDao:
                     WHEN t.id = :id_2 THEN :priority_1
                 END
             WHERE t.id in (:id_1, :id_2)
-            LIMIT 2
         """), param)
 
         return result.rowcount
