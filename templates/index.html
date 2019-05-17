@@ -4,12 +4,49 @@
 <head>
 	<meta charset="utf-8" />
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="./static/index.css" />
-	<script type="text/javascript" src="./static/index.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="../static/index.css" />
+	<script type="text/javascript" src="../static/index.js" charset="utf-8"></script>
 	<title>TODO-List</title>
 </head>
 <body>
-
+	<div id="box">
+		<div id="system">
+			<div id="system_foot">
+				<p id="log_time">로그 시간</p>
+				<p id="log">시스템 로그</p>
+			</div>
+		</div>
+		<div id="main">
+			<div id="main_top">
+				<input type="text" id="post_title" value="제목">
+				<input type="submit" id="post" value="올리기">
+			</div>
+			<div id="main_todo">
+				<ol id="todo_list">
+					<li class="todo_item">
+						<div>
+							<div>
+								<input type="button" name="up">
+								<input type="button" name="down">
+							</div>
+							<input type="text" name="title" value="제목">
+							<input type="text" name="datetime">
+						</div>
+						<div>
+							<input type="text" name="content" value="내용">
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div id="alarm">
+			<ol = "alarm_list">
+				<li class="alarm_item">
+					<p class="alarm_title">알람</p>
+				</li>
+			</ol>
+		</div>
+	</div>
 </body>
 </html>
 

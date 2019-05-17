@@ -1,0 +1,29 @@
+#box {
+	width: 960px;
+	height: 540px;
+}
+
+#system {
+	width: 100%;
+	height: 10%;
+	background-color: #E8D9FF;
+}
+
+	#system_foot {
+		position: absolute;	
+		bottom: 0px;
+	}
+
+#main {
+	width: 80%;
+	height: 90%;
+	background-color: #CEFBC9;
+	float: left;
+}
+
+#alarm {
+	width: 20%;
+	height: 90%;
+	background-color: #FFD8D8;
+	float: left;
+}
