@@ -21,21 +21,21 @@
 		</div>
 		<div id="main">
 			<div id="main_top">
-				<input type="text" id="post_title" placeholder="제목">
+				<input type="text" id="post_title" placeholder="제목" maxlength="255">
 				<input type="submit" id="post_btn" value="@TODO">
 			</div>
 			<div id="main_todo">
 				<ol id="todo_list">
 				<!--
-					<li class="todo_item" id="ㄹㅇid">
+					<li class="todo_item" id="ㄹㅇid" value="priority">
 						<div class="todo_item_top">
 							<div class="priority_btn">
 								<input type="button" class="up" name="up">
 								<input type="button" class="down" name="down">
 							</div>
-							<input type="text" class="title" name="title" placeholder="( 제목 )">
+							<input type="text" class="title" name="title" placeholder="( 제목 )" maxlength="255">
 							<div class="todo_item_right">
-								<input type="text" class="deadline" name="deadline" placeholder= "날짜 없음">
+								<input type="datetime" class="deadline" name="deadline" placeholder= "날짜 없음">
 								<div class="right_btn">
 									<input type="button" class="complete" name="complete">
 									<input type="button" class="delete" name="delete">

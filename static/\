@@ -23,7 +23,7 @@ $(document).ready(function () {
 
 				item_html = '<li class="todo_item" id="' + todo_all[index]["id"] + '" value ="'+ todo_all[index]["priority"] + '" ';
 				if (todo_all[index]['priority'] < 0)
-					item_html += 'style="opacity:0.4"';
+					item_html += 'style="opacity:0.5;"';
 
 				item_html += '>'
 					+ '<div class="todo_item_top">'
@@ -45,8 +45,6 @@ $(document).ready(function () {
 					todo_all_html += item_html;
 
 				// 여기는 알람 처리
-				var alarm_item_html = '';
-
 				if (todo_all[index]["deadline"])
 				{
 					if (datetime < new Date() && todo_all[index]['priority'] >= 0 )
@@ -56,10 +54,10 @@ $(document).ready(function () {
 							+ todo_all[index]['title'] + '</li>';
 					}
 				}
+				else
+					alarm_item_html ='';
 
 				all_alarm += alarm_item_html;
-
-				alarm_item_html ='';
 			}
 
 			$("#todo_list").html(todo_all_html);
@@ -155,93 +153,15 @@ $(document).ready(function () {
 				});
 			});
 /*---------------------------------------------------------------------------*/
-			// SWAP
-
-			var swap_ajax = function() {
-				$.ajax({
-					url: '/todo/priority',
-					type: 'POST',
-					contentType:"application/json; charset=UTF-8",
-					data: JSON.stringify({"item_1": item_1, "item_2": item_2}),
-					success: function() {
-						system_log = "우선순위가 조정되었습니다.";
-					},
-					complete: ajax_init
-				}); 
-			};
-
-			$('.up').off();
-			$('.down').off();
-
+			// SWAP			
 			$('.up').on('click', function() {
 				var item = $(this).parents('.todo_item');
 
 				// 완료된 경우 제외
-				if (item.val() < 0)
+				if (tem.val() < 0)
 					return;
 
-				var item_id = item.attr('id');
-				var todo_list = $('#todo_list');
-
-				var items = todo_list.find('.todo_item');
-				var index = 0;
-
-				for (var i in items) {
-					if (items.eq(i).attr('id') == item_id)
-					{
-						index = i;
-						break;
-					}
-				}
-
-				if (index == 0)
-					return;
-
-				if (items.eq(index).attr('id') != item_id)
-					return;
-
-				item_1 = {"id": item_id, "priority": item.val()};
-				item_2 = {"id": items.eq(index-1).attr('id'), "priority": items.eq(index-1).val()};
-
-				swap_ajax();
 			});
-
-			$('.down').on('click', function() {
-				var item = $(this).parents('.todo_item');
-
-				// 완료된 경우 제외
-				if (item.val() < 0)
-					return;
-
-				var item_id = item.attr('id');
-				var todo_list = $('#todo_list');
-
-				var items = todo_list.find('.todo_item');
-				var index = 0;
-
-				for (var i in items) {
-					if (items.eq(i).attr('id') == item_id)
-					{
-						index = i;
-						break;
-					}
-				}
-
-				if (index == items.length - 1)
-					return;
-
-				if (items.eq(index).attr('id') != item_id)
-					return;
-
-				if (items.eq(Number(index)+1).val() < 0)
-					return;
-
-				item_1 = {"id": item_id, "priority": item.val()};
-				item_2 = {"id": items.eq(Number(index)+1).attr('id'), "priority": items.eq(Number(index)+1).val()};
-
-				swap_ajax();
-			});
-
 
 	};
 

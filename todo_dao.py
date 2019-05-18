@@ -11,7 +11,6 @@ class TodoDao:
                 title,
                 content,
                 deadline,
-                is_completed,
                 priority
             FROM todo_list
         """)).fetchall()
@@ -21,7 +20,6 @@ class TodoDao:
                 'title': item['title'],
                 'content': item['content'],
                 'deadline': item['deadline'],
-                'is_completed': item['is_completed'],
                 'priority': item['priority']
         } for item in todo_all]
 
@@ -32,7 +30,6 @@ class TodoDao:
             title,
             content,
             deadline,
-            is_completed,
             priority
         FROM todo_list
         WHERE id = :id
@@ -43,7 +40,6 @@ class TodoDao:
             'title': item['title'],
             'content': item['content'],
             'deadline': item['deadline'],
-            'is_completed': item['is_completed'],
             'priority': item['priority']
         } if item else None
 
@@ -74,7 +70,7 @@ class TodoDao:
                 title = :title,
                 content = :content,
                 deadline = :deadline,
-                is_completed = :is_completed
+                priority = :priority
             WHERE
                 id = :id
             """), new_item)

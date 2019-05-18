@@ -39,9 +39,11 @@ def create_app(db_config = None):
         요청 받은 데이터를 todo 항목 추가
 
         :request.json: 'title', 'content', ('deadline')
-        :return: 추가한 데이터('id', 'title', 'content', 'deadline', 'is_completed', 'priority')
+        :return: 추가한 데이터('id', 'title', 'content', 'deadline', 'priority')
         """
         new_item = request.json
+        if not new_item:
+            return 'Error: required key - "title", "content", ("deadline")', 400
 
         required = ['title', 'content']
         if not all(key in new_item for key in required):
@@ -64,13 +66,17 @@ def create_app(db_config = None):
         """
         요청 받은 todo 항목을 수정(완료 포함)
 
-        :request.json: 'title', 'content', 'is_completed', ('deadline')
+        :request.json: 'title', 'content', 'priority', ('deadline')
         """
         new_item = request.json
 
-        required = ['title', 'content', 'is_completed']
+        if not new_item:
+            return 'Error: required key - "title", "content", "priority",("deadline")', 400
+
+
+        required = ['title', 'content', 'priority']
         if not all(key in new_item for key in required):
-            return 'Error: required key - "title", "content", "is_completed", ("deadline")', 400
+            return 'Error: required key - "title", "content", "priority", ("deadline")', 400
 
         new_item['id'] = id
 
@@ -113,6 +119,9 @@ def create_app(db_config = None):
         """
         item_1 = request.json['item_1']
         item_2 = request.json['item_2']
+
+        if item_1['priority'] < 0 or item_2['priority'] < 0:
+            return '완료된 항목은 변경할 수 없습니다.', 400
 
         rowcount = todoDao.swap_todo_priority(item_1, item_2)
         if rowcount == 2:
