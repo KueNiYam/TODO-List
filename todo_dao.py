@@ -4,6 +4,12 @@ class TodoDao:
     def __init__(self, database):
         self.db = database
 
+    def select_one(self):
+        todo_all = self.db.execute(text("""
+            SELECT 1
+        """))
+        return
+
     def select_todo_all(self):
         todo_all = self.db.execute(text("""
             SELECT

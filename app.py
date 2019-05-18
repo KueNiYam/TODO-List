@@ -21,6 +21,7 @@ def create_app(db_config = None):
 
     @app.route('/ping', methods=['GET'])
     def ping():
+        todoDao.select_one()
         return 'pong'
 
     @app.route('/todo/all', methods=['GET'])
