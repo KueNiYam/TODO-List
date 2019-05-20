@@ -3,6 +3,8 @@
 
 URL: http://summercoding-1350928674.ap-northeast-2.elb.amazonaws.com/
 
+웹 페이지는 크롬 브라우저에 최적화되어있습니다.
+
 ## 설치 및 빌드 방법
 
 1. 설치
